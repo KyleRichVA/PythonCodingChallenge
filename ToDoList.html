@@ -1,0 +1,25 @@
+<!-- A simple To Do List made in HTML using JavaScript you can add entries by typing in and remove entries by clicking on them. By Kyle Richardson -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Your To Do List</title>
+	</head>
+	<body>
+		<h3>To Do List:</h3>
+		<ul id="todoList"></ul>
+		<input id="entry" type="text" placeholder="Type In Your To Do" onkeydown="if (event.keyCode == 13) document.getElementById('entryButton').click()"/> <input type="submit" id="entryButton" value="Add To List" onclick="addItem()"/>
+		<script>
+			function addItem() {
+				var entry = document.createElement('LI');
+				entry.appendChild(document.createTextNode(document.getElementById("entry").value));
+				var curList = document.getElementById("todoList");
+				curList.insertBefore(entry, curList.childNodes[0]);
+				entry.onclick = function() {removeItem(entry)}
+				document.getElementById("entry").value = "";
+				}
+			function removeItem(item){
+				document.getElementById("todoList").removeChild(item);
+			}
+		</script>
+	</body>
+</html>
